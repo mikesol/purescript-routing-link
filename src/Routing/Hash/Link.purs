@@ -21,6 +21,7 @@ matchesWith router cb = do
     stashedNew <- read stashNew
     stashedPrev <- read stashPrev
     write stashedNew stashPrev
+    write Nothing stashNew
     case stashedPrev, stashedNew of
       Nothing, Nothing -> cb old new
       Just cheatingPrev, Just cheatingNew -> cb (Just cheatingPrev) cheatingNew
